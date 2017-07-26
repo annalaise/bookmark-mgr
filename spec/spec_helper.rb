@@ -3,11 +3,8 @@ ENV["RACK_ENV"] = "test"
 require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 
 require 'capybara/rspec'
-require 'simplecov'
-require 'simplecov-console'
 require './app/models/link'
 require 'database_cleaner'
-# require 'features/web_helpers'
 
 Capybara.app = BookmarkManager
 
