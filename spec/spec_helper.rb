@@ -1,9 +1,12 @@
+ENV["RACK_ENV"] = "test"
+
 require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
 require './app/models/link'
+require 'database_cleaner'
 # require 'features/web_helpers'
 
 Capybara.app = BookmarkManager
@@ -18,4 +21,17 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+    end
+
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+  end
 end
