@@ -13,7 +13,7 @@ group :test do
   gem 'database_cleaner'
   gem 'dm-transactions'
   gem 'rspec'
-  gem 'rubocop'
-  gem 'simplecov', require: false
-  gem 'simplecov-console', require: false
+  # gem 'rubocop'
+  # gem 'simplecov', require: false
+  # gem 'simplecov-console', require: false
 end
