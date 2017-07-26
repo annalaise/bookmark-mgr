@@ -18,15 +18,14 @@ feature 'Viewing links' do
     end
 
     scenario 'I can filter links by tag' do
-      visit 'tags/bubbles'
+      visit '/tags/bubbles'
 
       expect(page.status_code).to eq 200
       within 'ul#links' do
       expect(page).not_to have_content('Makers Academy')
       expect(page).not_to have_content('Code.org')
-      expect(page).not_to have_content('This is Zombocom')
-      expect(page).not_to have_content('Bubble Bobble')
+      expect(page).to have_content('This is Zombocom')
+      expect(page).to have_content('Bubble Bobble')
     end
   end
-
 end
